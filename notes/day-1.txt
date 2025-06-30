@@ -57,6 +57,48 @@ path: app-dir>node_modules
 
 global:
 >npm i <pakage-name> --location=global
+path: C:\Users\<user-name>\AppData\Roaming\npm
+
+Angular CLI tool
+install globally
+>npm i @angular/cli --location=global
+
+swiggy.com/index => resturants
+
+<html>
+	<body>
+		<app-root></app-root>	
+	</body>
+</html>
+
+root.html
+
+root.ts
+
+navbar.html
+<nav>
+	<button>...
+	<button>...
+</nav>
+
+contentpanel.html
+<nav>
+	<button>...
+	<button>...
+</nav>
+contentpanel.ts
+
+
+resturants.html
+
+
+design/template/view + code + metadata
+
+binding:
+	a. data binding: passing data and binding the same to an UI element
+	syntax: {{}}, []
+	b. event binding: passing data from UI to a method in the code (as a result of some event)
+	syntax: <html-element (event)="method-in-code(args)">
 
 
 
