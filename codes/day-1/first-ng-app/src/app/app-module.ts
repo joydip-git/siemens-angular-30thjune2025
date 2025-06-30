@@ -1,20 +1,24 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Another } from './another';
+
 
 @NgModule({
   declarations: [
-    App
+    App, Another
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
   ],
   bootstrap: [App]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    console.log('AppModule initialized');
+  }
+}

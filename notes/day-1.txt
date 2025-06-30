@@ -101,6 +101,56 @@ binding:
 	syntax: <html-element (event)="method-in-code(args)">
 
 
+Angular:
+	front-end UI development framework
+	it is a SPA
+	built upon series of components
+	passing data between the code and the view/template of the same component
+	separation of concerns	
+	routing feature
+	DI facility
+	form handling with model binding
+	HTTP requests (HttpClient)
+	
+
+component	class		@Component
+service		class		@Injectable
+pipe		class		@Pipe
+directive	class		@Directive
+module		class		@NgModule
+
+...
+class DataService
+{
+	private _http:HttpClient
+	constructor(http:HttpClient){ this._http = http;}
+	getData():string[]{
+		this._http.post/put/delete/get
+		return [];
+	}
+}
+
+@Component({
+	selector:'app-data'
+})
+class DataComponent{
+	private ds:DataService;
+	data:string[];
+	
+	constructor(_ds:DataService){
+		this.ds = _ds;
+	}
+
+	showData(){
+		this.data = this.ds.getData()
+	}
+}
+
+path: /myapp/index => component: HomeComponent
+
+
+
+
 
 
 

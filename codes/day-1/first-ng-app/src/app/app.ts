@@ -9,6 +9,10 @@ import { Component } from '@angular/core';
 export class App {
   title: string = 'NA'
 
+  constructor() {
+    console.log('App Component initialized');
+  }
+
   updateTitle(newTitle: string) {
     this.title = newTitle;
   }

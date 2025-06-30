@@ -1,10 +1,12 @@
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app-module';
+import { PlatformRef } from "@angular/core";
+import { platformBrowser } from "@angular/platform-browser";
+import { AppModule } from "./app/app-module";
 
-// setTimeout(() => {
-platformBrowser().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true,
-})
-  .catch(err => console.error(err));
-// }, 5000);
+console.log('Starting Angular application...');
 
+const platformRef: PlatformRef = platformBrowser()
+platformRef
+  .bootstrapModule(AppModule,
+    { ngZoneEventCoalescing: true }).catch(
+      (err) => console.log(err)
+    )
