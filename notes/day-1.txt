@@ -22,41 +22,13 @@ guided by ECMA using a guideline language: ECMAScript
 ES 1.0 => ES 6.0 (2015)
 a. let and const keywords
 
-
-class A{ public int x;}
-
-
-Main(){
-	Create();
-}
-create(){
-	int m = 10;
-	A obj = new A();
-	obj. x = 10;
-}
-
+JS compilation and execution:
 1. preparation stage:
 	variable and/or function declaration
+	Note: function declarations are hoisted, NOT the function expressions.
+
 2. execution stage:
-
-
-delegate bool LogicDel(int x);
-
-class Logic{
-	public bool IsEven(int num) => num %2 == 0;
-	public static bool IsOdd(int num) => num %2 != 0;
-
-}
-
-Main(){
-	Logic logic = new Logic();
-	LogicDel evenDel = new LogicDel(logic.IsEven);
-
-	LogicDel oddDel = Logic.IsOdd;
-
-	evenDel(12);
-	oddDel.Invoke(13);
-}
+	method calls, assignments etc. are taken care of
 
 
 
