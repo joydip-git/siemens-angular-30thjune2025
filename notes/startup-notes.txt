@@ -1,0 +1,13 @@
+https://forms.gle/ccZuFaPBSWg5kig37
+
+
+git repo:
+https://github.com/joydip-git/siemens-angular-30thjune2025
+
+s/w required:
+-------------------
+Node JS LTS version
+
+C:\Program Files\nodejs
+
+VS Code
