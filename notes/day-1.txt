@@ -30,6 +30,34 @@ JS compilation and execution:
 2. execution stage:
 	method calls, assignments etc. are taken care of
 
+TypeScript:
+	a. strict data typing
+	b. static type checking
+	c. extra data types
+	d. extra features
+		- creating custom types
+		- using generic
+		- ...
+
+TS is a development level language. there is no TS engine in browser or any runtime
+TS => vanilla JS
+
+package.json => list of installed packages, version, name, author, description, scripts etc. related values
+to create => >npm init --yes
+
+
+Typescript transpiler configuration file: tsconfig.json
+command: app-dir-path>.\node_modules\.bin\tsc --init
+
+package installation:
+local:
+app-dir>npm i <pakage-name> [-D]
+
+path: app-dir>node_modules
+
+global:
+>npm i <pakage-name> --location=global
+
 
 
 

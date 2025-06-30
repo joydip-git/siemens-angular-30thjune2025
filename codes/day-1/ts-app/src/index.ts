@@ -34,3 +34,4 @@ for (const element of namesWithN) {
     console.log(element);
 }
 */
+console.log('hello world ');
