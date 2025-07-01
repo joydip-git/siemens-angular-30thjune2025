@@ -93,4 +93,29 @@ d. component creation:
 	vii. nest the component in the root component (App)
 
 Run the application
+
+structure of the application:
+	app
+		app-module.ts
+		app.ts
+		app.html
+		app.css
+
+		products: (folder)
+			products-module.ts
+
+			components (folder)
+				product-list (folder)
+					product-list.ts
+					product-list.html
+					product-list.css
+
+			services (folder)
+				product-service.ts
+
+			pipes (folder)
+				product-pipe.ts
+
+			directives (folder)
+	
 	
