@@ -75,3 +75,48 @@ directives:
 	c. component directive: component itself is a special type of directive. we decorate it with @Component()
 
 
+Service and DI:
+-------------------------------
+1. creation:
+class XService{
+	get(id:number){}	
+	getAll(){}
+}
+
+2. registration:
+	a. dedicated instance for every asset
+		@Component({
+			//providers:[DataService]
+			//providers:[{ provide:DataService, useClass: DataService}]
+			providers:[{ provide:'SEVICE_TOKEN', useClass: DataService}]
+		})
+	b. shared instance for every asset in a feature module
+		@NgModule({
+			providers:[DataService]
+			providers:[{ provide:'SEVICE_TOKEN', useClass: DataService}]
+		})
+		class ProductModule{}
+
+	c. shared instance for every asset in the whole application
+		@NgModule({
+			providers:[DataService]
+			providers:[{ provide:'SEVICE_TOKEN', useClass: DataService}]
+		})
+		class AppModule{}
+
+3. consumption:
+class XComponent{
+	constructor(private ds:DataService){
+	}
+}
+
+import {Inject} from '@angular/core'
+class XComponent{
+	//private ds:DataService;
+	constructor(@Inject('SEVICE_TOKEN') private ds:DataService){
+		//this.ds = ds;
+	}
+}
+	
+
+
