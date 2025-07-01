@@ -1,0 +1,77 @@
+Binding: pass data from component code to the template and vice versa
+a. Data Binding: pass data from component code to the template of the same component
+b. Event Binding: pass data from component template to the code of the same component
+
+var titleInput = document.querySelector("input[type='text']")
+
+
+@NgModule({
+	declarations:[NgModelDirective]
+})
+class FormsModule{
+
+}
+
+@Directive({
+	selector:'[ngModel]'
+})
+class NgModelDirective{
+}
+
+
+@NgModule({
+	declarations:[FormControlDirective]
+})
+class ReactiveFormsModule{
+
+}
+
+@Directive({
+	selector:'[formControl]'
+})
+class FormControlDirective{
+}
+
+class FormControl{}
+
+form handling:
+	a. template-driven: control from the template using ngModel, ngForm etc. directives (from FormsModule)
+	b. reactive: control from the code via formControl, formControlName, formGroup, formGroupName etc. directives (from ReactiveFormsModule)
+
+
+for(let name of names){
+	<option>{{name}}</option>
+}
+
+@NgModule({
+	imports:[CommonModule]
+})
+class BrowserModule{
+
+}
+
+@NgModule({
+	declarations:[NgForDirective, NgIfDirective, NgSwitchDirective]
+})
+class CommonModule{
+
+}
+
+@Directive({
+	selector:'[ngFor]'
+})
+class NgForDirective{
+}
+
+directives:
+	a. attribute directives: they just adds additional behavior to the tag/element. they do not manipulate the dom element.
+	such as: ngModel, formControl etc.
+
+	b. structural directive: manipulates the DOM element. 
+	such as: *ngFor, *ngIfElse, *ngIf, *ngSwitch
+	it start with *
+	DO NOT use more than ONE structural directive per element
+
+	c. component directive: component itself is a special type of directive. we decorate it with @Component()
+
+

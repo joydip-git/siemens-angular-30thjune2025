@@ -146,6 +146,15 @@ class DataComponent{
 	}
 }
 
+
+@NgModule({
+	declarations:[OrderComponent,....]
+	providers:[OrderService]
+})
+class OrderModule{
+	
+}
+
 path: /myapp/index => component: HomeComponent
 
 

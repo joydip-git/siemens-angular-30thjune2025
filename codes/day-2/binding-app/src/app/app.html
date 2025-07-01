@@ -1,0 +1,22 @@
+<h2>
+  {{title}}
+</h2>
+<br>
+<!-- <input type="text" [value]="title" [style.width.px]="width" (change)="updateTitle($event)"> -->
+<!-- <input type="text" [value]="title" [style.width.px]="width" (input)="updateTitle($event.target.value)"> -->
+<!-- <input type="text" [value]="title" [style.width.px]="width" (input)="updateTitle(titleInput.value)" #titleInput> -->
+<!-- <input type="text" [style.width.px]="width" ngModel #titleInput="ngModel" (input)="updateTitle(titleInput)"> -->
+<input type="text" [style.width.px]="width" [(ngModel)]="title">
+<br>
+<input type="text" [formControl]="fmrCtrl">
+<br>
+<button type="button" (click)="submit()">Submit</button>
+<br>
+<br>
+<ng-template #noNames>
+  <span>No Names</span>
+</ng-template>
+<select *ngIf="names && names.length>0;else noNames">
+  <option selected disabled>--select--</option>
+  <option *ngFor="let name of names">{{name}}</option>
+</select>
