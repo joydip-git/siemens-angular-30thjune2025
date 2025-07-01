@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'pms-app';
+  show = false
+  toggle() {
+    this.show = !this.show;
+  }
 }

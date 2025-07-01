@@ -1,3 +1,6 @@
-<div class="container container-fluid">
+<button type="button" (click)="toggle()" [ngClass]="show ? 'btn btn-primary' : 'btn btn-danger'">
+  {{show? 'Hide' : 'Show'}} Products
+</button>
+<div class="container container-fluid" *ngIf="show">
   <app-product-list></app-product-list>
 </div>

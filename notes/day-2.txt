@@ -117,6 +117,21 @@ class XComponent{
 		//this.ds = ds;
 	}
 }
-	
+
+
+List<int> list = [..coll];	
+
+Component Lifecycle:
+--------------------------
+constructor()
+change		OnChange	ngOnChange
+init		OnInit		ngOnInit
+
+change
+
+destroy		OnDestroy	ngOnDestroy
+
+
+X		OnX		ngOnX
 
 
