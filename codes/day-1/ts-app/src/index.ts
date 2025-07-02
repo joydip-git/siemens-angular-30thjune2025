@@ -16,9 +16,10 @@ type fnType<T> = (x: T) => boolean;
 // const isEven: fnType = function (num: number) {
 //     return num % 2 == 0
 // }
-const isEven: fnType<number> = function (num: number) {
-    return num % 2 == 0
-}
+// const isEven: fnType<number> = function (num: number) {
+//     return num % 2 == 0
+// }
+const isEven: fnType<number> = (num: number) => num % 2 == 0
 
 const evenNumbers: number[] = filterValues<number>(numbers, isEven)
 for (const index in evenNumbers) {

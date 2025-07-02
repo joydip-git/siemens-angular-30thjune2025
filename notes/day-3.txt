@@ -1,0 +1,56 @@
+passing data between components:
+-----------------------------------
+a. parent to nested/child
+b. child to parent
+
+<input [value]="" (input/change)="">
+
+<app-sample [data]="">
+
+
+<h2>{{data}}</h2>
+<button (click)="fire()">Fire Event</button>
+class Child{
+	@Input('dataProp') data:string|undefined;
+	otherData=100
+	@Output() someEvent = new EventEmitter<number>()
+	fire(){
+		this.someEvent.emit(otherData)
+	}
+}
+
+@Component({
+	template:<div><input [(ngModel)]="name" (input)="someMethod(inp.value)" #inp>
+	<app-child [dataProp]="name" (someEvent)="otherMethod($event)"></...></div>
+})
+class Parent{
+	name='anil'
+	someMethod(){
+	}
+	otherMethod(data:number){}
+}
+
+ng g m products -> products-module.ts
+remove ProductList registration from App module and do the same in Products module
+remove the <app-product-list> from Appcomponent template
+ng g c products/components/product-container --skip-tests --dry-run
+ng g c products/components/product-filter --skip-tests
+
+
+
+@Pipe({name:'filterproduct'})
+class FilterProductPipe implements PipeTransform{
+	transform(value:productarray,...args:string[]):productarray{
+		ret....
+	}
+}
+
+data-to-transform|pipe-name:1st:2nd:3rd
+
+p.price|currency:'INR'
+
+
+
+
+
+
