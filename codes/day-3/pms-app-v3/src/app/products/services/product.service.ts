@@ -17,7 +17,7 @@ export class ProductService implements IProductService {
     }
 
     getProducts(): Product[] {
-        // this.http.get()
+        this.http.get()
         return [...productRecords];
     }
 }

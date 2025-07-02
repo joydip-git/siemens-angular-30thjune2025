@@ -1,4 +1,5 @@
 const divide = (a, b) => {
+
     const p = new Promise(
         //executor function
         (resolveFn, rejectFn) => {
@@ -29,3 +30,4 @@ divPromise
     .then((data) => { console.log(data); })
     .catch((err) => { console.log(err); });
 console.log(add(10, 2));
+
