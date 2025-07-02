@@ -1,13 +1,13 @@
 RESTful API description:
 
-URL										HTTP method		data			response
--------------------------------------------------------------------------------------------------
+URL					   HTTP method			data			response
+-----------------------------------------------------------------------------------------------------------------------------------
 get all products
-http://localhost:3000/products			GET				NA			{ "message":"", "data":[{},{},..]}
+http://localhost:3000/products			GET			NA		{ "message":"", "data":[{},{},..]}
 
 get single product
-http://localhost:3000/products/1		GET				id			{ "message":"", "data": {} }
-http://localhost:3000/products/10		GET				id			{ "message":"", "data": null }
+http://localhost:3000/products/1		GET			id		{ "message":"", "data": {} }
+http://localhost:3000/products/10		GET			id		{ "message":"", "data": null }
 
 add new product
 http://localhost:3000/products			POST			product		{ "message":"", "data":[{},{},..]}
@@ -18,8 +18,8 @@ http://localhost:3000/products/1		PUT			id, product	{ "message":"", "data":[{},{
 http://localhost:3000/products/10		PUT			id, product	{ "message":"", "data": null }
 
 delete product
-http://localhost:3000/products/1		DELETE			id			{ "message":"", "data":[{},{},..]}
-http://localhost:3000/products/10		DELETE			id			{ "message":"", "data": null }
+http://localhost:3000/products/1		DELETE			id		{ "message":"", "data":[{},{},..]}
+http://localhost:3000/products/10		DELETE			id		{ "message":"", "data": null }
 
 authentication
 http://127.0.0.1:3003/auth/authenticate POST  {usernane:'', password:''} { "message":"", "data":sting|null}

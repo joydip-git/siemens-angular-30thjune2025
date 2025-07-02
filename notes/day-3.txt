@@ -50,6 +50,32 @@ data-to-transform|pipe-name:1st:2nd:3rd
 p.price|currency:'INR'
 
 
+HTTP requests:
+-----------------------
+packge: @angular/common/http
+built-in service class: HttpClient
+module name:  HttpClientModule (Deprectaed)
+method: provideHttpClient() => {provide: HttpClient, useClass: HttpClient}
+methods: get(), put(), post(), delete(), patch(),....
+
+
+@Injectable()
+class A{
+	constructor(private obj:B){
+	}
+}
+
+readystate
+	 -> 0
+	 -> 1
+	 -> 2
+	 -> 3
+	 -> 4
+readystatechange
+
+
+
+
 
 
 
