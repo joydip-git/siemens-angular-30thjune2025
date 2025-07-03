@@ -1,0 +1,70 @@
+products
+1. add product component
+2. update product component
+3. product view component
+
+shared
+4. dashboard
+5. home
+6. page not found
+
+auth
+7. login
+8. regis
+
+
+Routing feature:
+----------------------------------
+package: @angualar/router
+module: RouterModule
+
+types:
+--------------------------------------
+route => path and component (Route)
+array of routes (Routes)
+
+type Routes=Route[]
+
+Service:
+----------------------
+Router engine => Router
+
+component:
+-----------------
+outlte for dynamically loaded routed components: <router-outlet></router-outlet>
+
+directives:
+--------------------
+
+register routes:
+------------------------
+RouterModule.forRoot([])
+RouterModule.forChild([])
+
+pms-app routes:
+-------------------------
+base url: http://localhost:4200/
+
+products:
+----------------------
+all products ->   products => ProductContainer [ProductList+ProductFilter]
+single product -> products/view/:id => ViewProduct
+update product -> products/update/:id => UpdateProduct
+add product   ->  products/add        => AddProduct
+
+auth:
+------------
+regis -> users/register -> Registration
+login -> users/login -> Login
+
+shared:
+----------------
+home -> home => Home
+redirect url 
+invalid URLS -> ** -> PageNotFound
+
+
+
+
+
+
