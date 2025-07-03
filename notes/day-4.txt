@@ -35,6 +35,8 @@ outlte for dynamically loaded routed components: <router-outlet></router-outlet>
 
 directives:
 --------------------
+routerLink="/home"
+[routerLink]="['/products','view',id]"
 
 register routes:
 ------------------------
@@ -47,6 +49,8 @@ base url: http://localhost:4200/
 
 products:
 ----------------------
+products-rouring-module.ts
+
 all products ->   products => ProductContainer [ProductList+ProductFilter]
 single product -> products/view/:id => ViewProduct
 update product -> products/update/:id => UpdateProduct
@@ -62,6 +66,18 @@ shared:
 home -> home => Home
 redirect url 
 invalid URLS -> ** -> PageNotFound
+
+
+Which of the following APIs/packages can be used for data fetching? *
+ 
+1 point
+ 
+
+a.	Axios
+b.	fetch api of browser
+c.	both of them
+d.	none of them
+
 
 
 
