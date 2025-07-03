@@ -8,4 +8,6 @@ export interface IPmsService {
     addProduct(p: Product): Observable<ApiResponse<Product[]>>;
     updateProduct(id: number, p: Product): Observable<ApiResponse<Product[]>>;
     deleteProduct(id: number): Observable<ApiResponse<Product[]>>;
+    saveProduct(p: Product | undefined): void;
+    productObservable: Observable<Product | undefined>;
 }

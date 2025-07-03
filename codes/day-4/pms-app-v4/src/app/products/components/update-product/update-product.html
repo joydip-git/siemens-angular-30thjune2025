@@ -1,1 +1,25 @@
-<p>update-product works!</p>
+<ng-template #noProduct>
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> No product found.
+    </div>
+</ng-template>
+<ng-template #loadingTemplate>
+    <div class="alert alert-info">
+        <strong>Loading...</strong> Please wait.
+    </div>
+</ng-template>
+<ng-template #errorTemplate>
+    <div class="alert alert-danger">
+        <strong>Error!</strong> {{errorInfo}}
+    </div>
+</ng-template>
+<div *ngIf="isLoadingOver;else loadingTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <form *ngIf="product;else noProduct">
+            <div>
+                <label for="txtName">Name: &nbsp;</label>
+                <input type="text" [value]="product.productName" id="txtName">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,16 +1,17 @@
 import { HttpClient } from "@angular/common/http";
-import { productRecords } from "../../data/products";
 import { Product } from "../../models/product";
 import { IPmsService } from "./productservice.contract";
 import { Injectable } from "@angular/core";
 import { PRODUCT_API_URL } from "../../config/constants";
 import { ApiResponse } from "../../models/api-response";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 //@Injectable({ providedIn: 'root' })
 @Injectable()
 export class ProductService implements IPmsService {
 
+    private repo = new BehaviorSubject<Product | undefined>(undefined)
+    productObservable: Observable<Product | undefined> = this.repo.asObservable()
     // private readonly http: HttpClient;
     // constructor(http: HttpClient) {
     //     this.http = http;
@@ -33,5 +34,8 @@ export class ProductService implements IPmsService {
     getProducts(): Observable<ApiResponse<Product[]>> {
         const resp: Observable<ApiResponse<Product[]>> = this.http.get<ApiResponse<Product[]>>(PRODUCT_API_URL)
         return resp
+    }
+    saveProduct(p: Product | undefined): void {
+        this.repo.next(p);
     }
 }

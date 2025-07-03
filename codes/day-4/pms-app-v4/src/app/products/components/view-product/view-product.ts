@@ -37,16 +37,19 @@ export class ViewProduct implements OnInit {
         next: (resp) => {
           if (resp.data !== null) {
             this.product = resp.data
+            this.ps.saveProduct(resp.data)
             this.isLoadingOver = true
             this.errorInfo = ''
           } else {
             this.product = undefined
+            this.ps.saveProduct(undefined)
             this.isLoadingOver = true
             this.errorInfo = resp.message
           }
         },
         error: (err) => {
           this.product = undefined
+          this.ps.saveProduct(undefined)
           this.isLoadingOver = true
           this.errorInfo = err.message
         }

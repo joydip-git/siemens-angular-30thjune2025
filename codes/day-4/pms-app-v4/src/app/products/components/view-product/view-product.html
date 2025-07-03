@@ -1,7 +1,26 @@
-<div *ngIf="product" class="info">
-    Name:{{product.productName}}
-    <br>
-    <button type="button" (click)="goToUpdate(product.productId)" class="btn btn-primary">
-        Edit
-    </button>
+<ng-template #noProduct>
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> No product found.
+    </div>
+</ng-template>
+<ng-template #loadingTemplate>
+    <div class="alert alert-info">
+        <strong>Loading...</strong> Please wait.
+    </div>
+</ng-template>
+<ng-template #errorTemplate>
+    <div class="alert alert-danger">
+        <strong>Error!</strong> {{errorInfo}}
+    </div>
+</ng-template>
+<div *ngIf="isLoadingOver;else loadingTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <div *ngIf="product" class="info">
+            Name:{{product.productName}}
+            <br>
+            <button type="button" (click)="goToUpdate(product.productId)" class="btn btn-primary">
+                Edit
+            </button>
+        </div>
+    </div>
 </div>

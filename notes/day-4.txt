@@ -67,16 +67,34 @@ home -> home => Home
 redirect url 
 invalid URLS -> ** -> PageNotFound
 
+<ng-template #loadingTemplate *ngIf="showLoading">
+    <div class="alert alert-info">
+        <strong>Loading...</strong> Please wait.
+    </div>
+</ng-template>
+<ng-template #errorTemplate *ngIf="showError">
+    <div class="alert alert-danger">
+        <strong>Error!</strong> {{errorInfo}}
+    </div>
+</ng-template>
+<ng-template #noRecord *ngIf="showRecordUnavailable">
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> No Record found.
+    </div>
+</ng-template>
 
-Which of the following APIs/packages can be used for data fetching? *
- 
-1 point
+class AlternateTemplate{
+	@Input() showLoading=false;
+	@Input() showError=false
+	@Input() showRecordUnavailable=false
+}
+
+<app-alt [showLoading]=""  ></app-alt>
+
+
  
 
-a.	Axios
-b.	fetch api of browser
-c.	both of them
-d.	none of them
+
 
 
 
