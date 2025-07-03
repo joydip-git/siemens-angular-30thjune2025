@@ -16,10 +16,13 @@
 <div *ngIf="isLoadingOver;else loadingTemplate">
     <div *ngIf="errorInfo==='';else errorTemplate">
         <form *ngIf="product;else noProduct">
-            <div>
-                <label for="txtName">Name: &nbsp;</label>
-                <input type="text" [value]="product.productName" id="txtName">
-            </div>
+            <fieldset>
+                <legend>Details of {{product.productName}}</legend>
+                <div>
+                    <label for="txtName" class="form-label mt-4">Name: &nbsp;</label>
+                    <input type="text" [value]="product.productName" id="txtName" class="form-control">
+                </div>
+            </fieldset>
         </form>
     </div>
 </div>
