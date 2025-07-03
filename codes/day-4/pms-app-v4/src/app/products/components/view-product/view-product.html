@@ -1,1 +1,7 @@
-<button type="button" (click)="goToUpdate()">Edit</button>
+<div *ngIf="product" class="info">
+    Name:{{product.productName}}
+    <br>
+    <button type="button" (click)="goToUpdate(product.productId)" class="btn btn-primary">
+        Edit
+    </button>
+</div>

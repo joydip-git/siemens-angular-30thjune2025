@@ -52,7 +52,7 @@ export class ViewProduct implements OnInit {
         }
       })
   }
-  goToUpdate() {
-    this.router.navigate(['/products/update', 2])
+  goToUpdate(id: number) {
+    this.router.navigate(['/products/update', id])
   }
 }
