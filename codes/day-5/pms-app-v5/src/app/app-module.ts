@@ -27,12 +27,13 @@ import { TokenInterceptorService } from './services/token-interceptor-service';
   //services
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useExisting: TokenInterceptorService,
-      multi: true
-    }
+    provideHttpClient(withInterceptors([TokenInterceptorService]))
+    // provideHttpClient(),
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useExisting: TokenInterceptorService,
+    //   multi: true
+    // }
   ],
   bootstrap: [App]
 })

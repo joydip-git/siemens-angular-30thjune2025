@@ -5,6 +5,7 @@ import { USER_SERVICE_TOKEN } from '../../../config/constants';
 import { User } from '../../../models/user';
 import { Subscription } from 'rxjs';
 import { TokenService } from '../../../services/token-service';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,9 @@ export class Login {
   constructor(
     private builder: FormBuilder,
     @Inject(USER_SERVICE_TOKEN) private us: IUserContract,
-    private tokenSvc: TokenService
+    private tokenSvc: TokenService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.loginForm = this.builder.group({
       username: [''],
@@ -48,6 +51,14 @@ export class Login {
         },
         error: (err) => {
           alert(err.message)
+        },
+        complete: () => {
+          const snapshot: ActivatedRouteSnapshot = this.route.snapshot
+          const url = snapshot.queryParams['redirectUrl']
+          if (url && url !== '') {
+            this.router.navigate([url])
+          } else
+            this.router.navigate(['/products'])
         }
       })
   }
