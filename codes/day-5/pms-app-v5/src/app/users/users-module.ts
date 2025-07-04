@@ -6,6 +6,7 @@ import { UsersRoutingModule } from './users-routing-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { provideHttpClient } from '@angular/common/http';
+import { USER_SERVICE, USER_SERVICE_TOKEN } from '../config/constants';
 
 
 
@@ -20,7 +21,10 @@ import { provideHttpClient } from '@angular/common/http';
     ReactiveFormsModule
   ],
   providers: [
-    UserService,
+    {
+      provide: USER_SERVICE_TOKEN,
+      useClass: USER_SERVICE
+    },
     provideHttpClient()
   ]
 })

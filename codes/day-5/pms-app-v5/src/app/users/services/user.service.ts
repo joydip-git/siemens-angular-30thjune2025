@@ -18,6 +18,8 @@ export class UserService implements IUserContract {
   }
 
   register(user: User): Observable<ApiResponse<User>> {
+
     return this.http.post<ApiResponse<User>>(`${USER_API_URL}/register`, user);
+
   }
 }

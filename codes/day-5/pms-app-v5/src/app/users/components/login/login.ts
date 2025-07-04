@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { IUserContract } from '../../services/userservice.contract';
+import { USER_SERVICE_TOKEN } from '../../../config/constants';
+import { User } from '../../../models/user';
+import { Subscription } from 'rxjs';
+import { TokenService } from '../../../services/token-service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +20,13 @@ export class Login {
   //   password: this.passwordCtrl
   // })
   loginForm: FormGroup;
+  subscription?: Subscription;
 
-  constructor(private builder: FormBuilder) {
+  constructor(
+    private builder: FormBuilder,
+    @Inject(USER_SERVICE_TOKEN) private us: IUserContract,
+    private tokenSvc: TokenService
+  ) {
     this.loginForm = this.builder.group({
       username: [''],
       password: ['']
@@ -24,6 +34,21 @@ export class Login {
   }
 
   submit() {
-    console.log(this.loginForm.value);
+    const userData = this.loginForm.value as User
+    this.subscription = this.us
+      .authenticate(userData)
+      .subscribe({
+        next: (resp) => {
+          if (resp.data !== null) {
+            this.tokenSvc.saveToken(resp.data)
+            alert('valid user')
+          } else {
+            alert(resp.message)
+          }
+        },
+        error: (err) => {
+          alert(err.message)
+        }
+      })
   }
 }
