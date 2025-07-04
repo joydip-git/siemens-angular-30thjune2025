@@ -1,0 +1,70 @@
+<ng-template #noProduct>
+    <div class="alert alert-danger">
+        <strong>Sorry!</strong> No product found.
+    </div>
+</ng-template>
+<ng-template #loadingTemplate>
+    <div class="alert alert-info">
+        <strong>Loading...</strong> Please wait.
+    </div>
+</ng-template>
+<ng-template #errorTemplate>
+    <div class="alert alert-danger">
+        <strong>Error!</strong> {{errorInfo}}
+    </div>
+</ng-template>
+<div *ngIf="isLoadingOver;else loadingTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <form *ngIf="product;else noProduct">
+            <fieldset>
+                <legend>Details of {{product.productName}}</legend>
+
+                <div>
+                    <label for="txtId" class="form-label mt-4">Id: &nbsp;</label>
+                    <input type="text" [value]="product.productId" id="txtId" class="form-control" readonly>
+                </div>
+
+                <div>
+                    <label for="txtName" class="form-label mt-4">Name: &nbsp;</label>
+                    <input type="text" [value]="product.productName" id="txtName" class="form-control">
+                </div>
+
+                <div>
+                    <label for="txtDesc" class="form-label mt-4">Description: &nbsp;</label>
+                    <textarea type="text" [value]="product.description" id="txtDesc" class="form-control" rows="5"
+                        cols="10"></textarea>
+                </div>
+
+                <div>
+                    <label for="txtPrice" class="form-label mt-4">Price: &nbsp;</label>
+                    <input type="text" [value]="(product.price|currency:'INR')" id="txtPrice" class="form-control">
+                </div>
+
+                <div>
+                    <label for="txtDate" class="form-label mt-4">Released On: &nbsp;</label>
+                    <input type="text" [value]="product.releaseDate" id="txtDate" class="form-control">
+                </div>
+
+                <div>
+                    <label for="txtCode" class="form-label mt-4">Code: &nbsp;</label>
+                    <input type="text" [value]="product.productCode" id="txtCode" class="form-control">
+                </div>
+
+                <div>
+                    <label for="txtRating" class="form-label mt-4">Rating: &nbsp;</label>
+                    <input type="text" [value]="product.starRating" id="txtRating" class="form-control" readonly>
+                </div>
+
+                <div>
+                    <label for="txtImgUrl" class="form-label mt-4">Image: &nbsp;</label>
+                    <input type="text" [value]="product.imageUrl" id="txtImgUrl" class="form-control">
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </fieldset>
+        </form>
+        <br>
+    </div>
+</div>

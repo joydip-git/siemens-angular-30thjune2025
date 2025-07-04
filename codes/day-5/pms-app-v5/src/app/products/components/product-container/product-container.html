@@ -1,0 +1,5 @@
+<div style="margin-top: 20px;">
+    <app-product-filter (filterTextChanged)="receiveFilterText($event)"></app-product-filter>
+    <br>
+    <app-product-list [filterTextValue]="filterValue"></app-product-list>
+</div>
