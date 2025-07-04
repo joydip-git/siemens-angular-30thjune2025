@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserContract } from '../../services/userservice.contract';
 import { USER_SERVICE_TOKEN } from '../../../config/constants';
 import { User } from '../../../models/user';
 import { Subscription } from 'rxjs';
 import { TokenService } from '../../../services/token-service';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { passwordValidator } from '../../validators/passwordvalidator';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,8 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
   styleUrl: './login.css'
 })
 export class Login {
-  // userNameCtrl = new FormControl('',[])
-  // passwordCtrl = new FormControl()
+  // username = new FormControl('',[])
+  // password = new FormControl()
   // loginFrm = new FormGroup({
   //   username: this.userNameCtrl,
   //   password: this.passwordCtrl
@@ -31,12 +32,19 @@ export class Login {
     private router: Router
   ) {
     this.loginForm = this.builder.group({
-      username: [''],
-      password: ['']
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, passwordValidator]]
     })
   }
 
+  get username() {
+    return this.loginForm.get('username')
+  }
+  get password() {
+    return this.loginForm.get('password')
+  }
   submit() {
+    // console.log(this.loginForm.get('username')?.errors);
     const userData = this.loginForm.value as User
     this.subscription = this.us
       .authenticate(userData)

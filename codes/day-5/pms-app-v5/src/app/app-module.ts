@@ -27,8 +27,12 @@ import { TokenInterceptorService } from './services/token-interceptor-service';
   //services
   providers: [
     provideBrowserGlobalErrorListeners(),
+
+    //use the following when you create interceptor as function (preferred)
     provideHttpClient(withInterceptors([TokenInterceptorService]))
-    // provideHttpClient(),
+
+    //use the following when you create interceptor as class
+    // HttpClinetModule,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useExisting: TokenInterceptorService,

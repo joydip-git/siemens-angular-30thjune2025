@@ -21,6 +21,7 @@ export class ProductList implements OnInit, OnDestroy, OnChanges {
     errorInfo = ''
     @Input('filterTextValue') filterText = 'NA'
     private sub: Subscription | undefined;
+    private deleteSub?: Subscription;
 
     // constructor(private ps: ProductService) {
     //     console.log('created');
@@ -43,13 +44,41 @@ export class ProductList implements OnInit, OnDestroy, OnChanges {
     }
     ngOnInit(): void {
         console.log('init');
-        const obs = this.ps.getProducts();
+        this.fetchProductRecords()
         // const responseObserver: Observer<ApiResponse<Product[]>> = {
         //     next: () => { },
         //     error: () => { },
         //     complete: () => { }
         // }
         // this.sub = obs.subscribe(responseObserver)
+
+    }
+    delete(id: number) {
+        if (confirm('would you like to delete?')) {
+            this.deleteSub = this.ps.deleteProduct(id).subscribe({
+                next: (resp) => {
+                    if (resp.data !== null) {
+                        //this.isLoadingOver = true
+                        this.errorInfo = ''
+                        //this.products = resp.data
+                        alert(resp.message)
+                    } else {
+                        //this.isLoadingOver = true
+                        this.errorInfo = resp.message
+                    }
+                },
+                error: (err) => {
+                    this.errorInfo = err.message
+                    //this.isLoadingOver = true
+                },
+                complete: () => {
+                    this.fetchProductRecords()
+                }
+            })
+        }
+    }
+    private fetchProductRecords() {
+        const obs = this.ps.getProducts();
         this.sub = obs.subscribe(
             {
                 next: (resp) => {

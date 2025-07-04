@@ -7,15 +7,46 @@ interceptors
 
 @Injectable()
 class TokenInterceptor implements HttpInterceptor{
-	intercept(...,next:NextFunction){
+	intercept(req: HttpRequest<unknown>,next:NextFunction):Observable<HttpEvent<unknown>>{
 		return next.handle(req)
 	}
 }
 
+
+export function tokenInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+  return next(req)
+}
+
 providers:[
+	HttpClientModule,
 	{
 		provide:'HTTP_INTERCEPTORS',
 		useClass:TokenInterceptor,
 		multi:true
 	}
+	
 ]
+
+providers:[
+	provideHttpClient(withInterceptors([tokenInterceptor]))
+	
+]
+
+
+
+'Authorization':'Bearer <token>'
+
+type ValidationError ={
+	(key:string):any
+}
+
+function required(control:AbstractControl):ValidationError|null{
+	if(control && control.value){
+		if(control.value.length===0)
+		  return {'required':true}
+	}else
+		return null
+
+}
+
+

@@ -3,11 +3,43 @@
         <label class="form-label mt-4" for="txtUserName">UserName: &nbsp;</label>
         <input type="text" id="txtUserName" class="form-control" formControlName="username">
     </div>
+
+    <div *ngIf="username?.touched||username?.dirty">
+        <div *ngIf="username?.errors?.['required']">
+            <span>enter user name</span>
+        </div>
+        <div *ngIf="username?.errors?.['email']">
+            <span>enter user name in email format</span>
+        </div>
+    </div>
+
     <div>
         <label class="form-label mt-4" for="txtPassword">Password: &nbsp;</label>
         <input type="password" id="txtPassword" class="form-control" formControlName="password">
     </div>
-    <div>
-        <input type="submit" class="btn btn-primary" value="Login">
+
+    <div *ngIf="password?.touched||password?.dirty">
+        <div *ngIf="password?.errors?.['required']">
+            <span>enter password</span>
+        </div>
+        <div *ngIf="password?.errors?.['length']">
+            <span>enter password with length between {{password?.errors?.['length']?.max}} and
+                {{password?.errors?.['length']?.min}}. current length is:
+                {{password?.errors?.['length']?.current}}</span>
+        </div>
+        <div *ngIf="password?.errors?.['uppercase']">
+            <span>password must have at least one uppercase</span>
+        </div>
+        <div *ngIf="password?.errors?.['lowercase']">
+            <span>password must have at least one lowercase</span>
+        </div>
+        <div *ngIf="password?.errors?.['digit']">
+            <span>password must have at least one digit</span>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <input type="submit" [disabled]="loginForm.invalid" class="btn btn-primary" value="Login">
     </div>
 </form>
