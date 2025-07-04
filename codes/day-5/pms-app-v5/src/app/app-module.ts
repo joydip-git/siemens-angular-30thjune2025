@@ -7,6 +7,8 @@ import { ProductsModule } from './products/products-module';
 import { UsersModule } from './users/users-module';
 import { SharedModule } from './shared/shared-module';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor-service';
 
 @NgModule({
   //components, directives, pipes
@@ -24,7 +26,13 @@ import { RouterModule } from '@angular/router';
   ],
   //services
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useExisting: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [App]
 })
