@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "sm3Ssmroww8=",
+  "success": true,
+  "projectFilePath": "D:\\training\\siemens-angular-30thjune2025\\codes\\day-5\\AngularHost\\AngularHost.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joydip\\.nuget\\packages\\microsoft.web.webview2\\1.0.3351.48\\microsoft.web.webview2.1.0.3351.48.nupkg.sha512"
+  ],
+  "logs": []
+}
